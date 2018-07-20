@@ -15,6 +15,8 @@ window.onload = function() {
 
   gq2().get('.elem2').setText('fff');
 
-  gq2().get('.elem2').del();
+  // gq2().get('.elem2').del();
+
+  $$$().get('.myclass1').setHTML('$$$');
 
 }
