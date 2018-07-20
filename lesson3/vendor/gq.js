@@ -1,16 +1,11 @@
-var gq = (function() {
+var gq = function() {
   'use strict';
 
   var _search;
 
-  var _collection;
-  var _first;
+  var _collection = [];
+  var _first = true;
 
-  function init() {
-    _collection = [];
-    _first = true;
-    return this;
-  }
 
   function _findInCollection(elementType) {
     switch (elementType) {
@@ -133,7 +128,6 @@ var gq = (function() {
 
 
   return {
-    init: init,
     get: get, // #=id, .=class, ^=tag, +=name
     setHTML: setHTML,
     setText: setText,
@@ -141,4 +135,4 @@ var gq = (function() {
     addClass: addClass,
     removeClass: removeClass,
   };
-}());
+}
