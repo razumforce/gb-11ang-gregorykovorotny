@@ -131,6 +131,13 @@ var gq = (function() {
     return this;
   }
 
+  function del() {
+    for(var i in _collection) {
+      _collection[i].parentNode.removeChild(_collection[i]);
+    }
+    return;
+  }
+
 
   return {
     init: init,
@@ -140,5 +147,6 @@ var gq = (function() {
     setAttr: setAttr,
     addClass: addClass,
     removeClass: removeClass,
+    del: del,
   };
 }());

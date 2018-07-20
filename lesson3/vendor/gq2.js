@@ -126,6 +126,13 @@ var gq2 = function() {
     return this;
   }
 
+  function del() {
+    for(var i in _collection) {
+      _collection[i].parentNode.removeChild(_collection[i]);
+    }
+    return;
+  }
+
 
   return {
     get: get, // #=id, .=class, ^=tag, +=name
@@ -134,5 +141,6 @@ var gq2 = function() {
     setAttr: setAttr,
     addClass: addClass,
     removeClass: removeClass,
+    del: del,
   };
 }

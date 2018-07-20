@@ -4,6 +4,8 @@ window.onload = function() {
   gq.init().get('#test2').setAttr('name', 'nnn3');
   gq.init().get('+nnn3').addClass('a123').addClass('abc1234');
 
+  gq.init().get('+nnn3').del();
+
 
 
   gq2().get('^p').get('.elem2').setAttr('name', 'name5');
@@ -12,5 +14,7 @@ window.onload = function() {
   gq2().get('+nnn3').addClass('a123').addClass('abc1234');
 
   gq2().get('.elem2').setText('fff');
+
+  gq2().get('.elem2').del();
 
 }
