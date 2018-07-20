@@ -123,10 +123,11 @@ var gq = (function() {
   function removeClass(name) {
     var search = new RegExp('\\b' + name + '\\b', 'i'); // нечувствительно к регистру
     for(var i in _collection) {
-      if (!_collection[i].className.match(search))
-      var newClass = _collection[i].className.replace(name + ' ', '');
-      newClass = newClass.replace(' ' + name, '');
-      _collection[i].className = newClass;
+      if (_collection[i].className.match(search)) {
+        var newClass = _collection[i].className.replace(name + ' ', '');
+        newClass = newClass.replace(' ' + name, '');
+        _collection[i].className = newClass;
+      }
     }
     return this;
   }
