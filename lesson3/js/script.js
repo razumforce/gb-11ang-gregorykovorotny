@@ -1,30 +1,14 @@
 window.onload = function() {
-  // gq.init().get('^p').get('.elem2').setAttr('name', 'name5');
-  // gq.init().get('.elem2').addClass('myclass1');
-  // gq.init().get('#test2').setAttr('name', 'nnn3');
-  // gq.init().get('+nnn3').addClass('a123').addClass('abc1234');
-  //
-  // gq.init().get('+nnn3').del();
-  //
-  //
-  //
-  // gq2().get('^p').get('.elem2').setAttr('name', 'name5');
-  // gq2().get('.elem2').addClass('myclass1');
-  // gq2().get('#test2').setAttr('name', 'nnn3');
-  // gq2().get('+nnn3').addClass('a123').addClass('abc1234');
-  //
-  // gq2().get('.elem2').setText('fff');
+  $5('.class1').setHTML('<p>Эта разметка была <strong>вставленна</strong> фреймворком $5</p>');
+  $5('p span').setText('Этот текст был вставлен фреймворком $5');
+  $5('+check1').setAttr('checked', true);
+  $5('+check2').setAttr('checked', true);
+  $5('#elem-to-remove').del();
+  $5('#html-plus-attributes')
+    .setHTML('<h2>Привет</h2><p>Меня вставил фреймворк $5</p>')
+    .setAttr('title', 'Я подсказка');
 
-  // gq2().get('.elem2').del();
-
-  $$$().get('^p').get('.elem2').setAttr('name', 'name5');
-  // $$$().get('.elem2').addClass('myclass1');
-  $$$().get('#test2').setAttr('name', 'nnn3');
-  $$$().get('+nnn3').addClass('a123').addClass('abc1234');
-  $$$().get('#test2').removeClass('elem2');
-
-  // $$$().get('+nnn3').del();
-
-  $$$().get('.myclass1').setHTML('$$$');
+  var $5extra = $5('#extra-sample');
+  $5extra.setHTML('<p>Я разметка, которую вставил фреймворк $5.</p>');
 
 }
