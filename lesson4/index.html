@@ -9,6 +9,8 @@
     <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script defer type="text/javascript" src="./vendor/$5.js"></script>
+    <script defer type="text/javascript" src="./vendor/_.js"></script>
+    <script defer type="text/javascript" src="./vendor/bb.js"></script>
     <script defer type="text/javascript" src="./js/script.js"></script>
   </head>
   <body id="myPage">
@@ -39,20 +41,39 @@
       </ul>
 
       <div class="tab-content text-center">
+
         <div id="expenses" class="tab-pane fade in active">
           <h3>РАСХОДЫ</h3>
-          <p>содержимое расходы</p>
+          <div class="row">
+            <div class="col-sm-4">
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <input id="exp-input" type="text" class="form-control" name="my-input" placeholder="Введите значение" />
+              </div>
+              <div class="form-group">
+                <button id="add-exp-button" type="button" class="btn btn-default">Добавить в список</button>
+              </div>
+              <ul id="exp-list">
+
+              </ul>
+            </div>
+            <div class="col-sm-4">
+            </div>
+          </div>
         </div>
+
         <div id="categories" class="tab-pane fade">
           <h3>КАТЕГОРИИ</h3>
           <p>содержимое категории</p>
         </div>
       </div>
+
     </div>
 
 
     <footer class="container-fluid text-center navbar-fixed-bottom">
-      <p>Copyright 2018 <a href="#">Учет расходов</a></p>
+      <p>Copyright 2018 - <a href="#">Учет расходов</a></p>
     </footer>
 
   </body>

@@ -161,6 +161,30 @@ var $5 = (function() {
     return;
   }
 
+  // val - получаем значение val() выбранного элемента (если их 0 или > 1 - то возвращем undefined)
+  Collection.prototype.val = function(data) {
+    if (this._collection.length != 1) {
+      return undefined;
+    } else {
+      if (typeof data === 'undefined') {
+        return this._collection[0].value;
+      } else {
+        this._collection[0].value = data;
+        return undefined;
+      }
+    }
+  }
+
+  // append - добавляем element в конец HTML содержимого элемента (если их 0 или > 1 - то возвращем undefined)
+  Collection.prototype.append = function(data) {
+    if (this._collection.length != 1) {
+      return undefined;
+    } else {
+      this._collection[0].innerHTML = this._collection[0].innerHTML + data;
+      return this;
+    }
+  }
+
 
   return function(param) {
     if (param === undefined) {

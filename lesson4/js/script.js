@@ -1,14 +1,32 @@
 window.onload = function() {
-  $5('.class1').setHTML('<p>Эта разметка была <strong>вставленна</strong> фреймворком $5</p>');
-  $5('p span').setText('Этот текст был вставлен фреймворком $5');
-  $5('+check1').setAttr('checked', true);
-  $5('+check2').setAttr('checked', true);
-  $5('#elem-to-remove').del();
-  $5('#html-plus-attributes')
-    .setHTML('<h2>Привет</h2><p>Меня вставил фреймворк $5</p>')
-    .setAttr('title', 'Я подсказка');
 
-  var $5extra = $5('#extra-sample');
-  $5extra.setHTML('<p>Я разметка, которую вставил фреймворк $5.</p>');
+  var ItemsList = Backbone.Collection.extend({
+    initialize: function() {
+      this.bind('add', function(model) {
+        view.render(model);
+      });
+    },
+  });
 
+  var ItemsView = Backbone.View.extend({
+    tagName: 'li',
+    events: {
+      'click #add-exp-button': 'addItemToList',
+    },
+    initialize: function() {
+      this.itemsList = new ItemsList();
+      _.bindAll(this, 'render');
+    },
+    addItemToList: function() {
+      var itemValue = $5('#exp-input').val();
+      $5('#exp-input').val('');
+      this.itemsList.add({ myValue: itemValue });
+    },
+    render: function(model) {
+      $5('#exp-list').append('<li>' + model.get('myValue') + '</li>');
+      console.log('item added');
+    },
+  });
+
+  var view = new ItemsView({ el: 'body' });
 }

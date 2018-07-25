@@ -8,7 +8,7 @@
 
 .navbar {
   margin-bottom: 0;
-  background-color: #f4511e;
+  background-color: #9B391A;
   z-index: 9999;
   border: 0;
   font-size: 12px !important;
@@ -22,7 +22,7 @@
 }
 
 .navbar .navbar-nav li a:hover, .navbar .navbar-nav li.active a {
-  color: #f4511e;
+  color: #9B391A;
   background-color: #fff;
 }
 
@@ -33,6 +33,11 @@
 
 .navbar-fixed-bottom {
   background-color: #f6f6f6;
+}
+
+.navbar-fixed-bottom a {
+  background-color: #f6f6f6;
+  color: #9B391A;
 }
 
 .nav.nav-tabs li a {
