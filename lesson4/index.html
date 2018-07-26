@@ -12,6 +12,8 @@
     <script defer type="text/javascript" src="./vendor/_.js"></script>
     <script defer type="text/javascript" src="./vendor/bb.js"></script>
     <script defer type="text/javascript" src="./js/script.js"></script>
+    <script defer type="text/javascript" src="./js/script-category.js"></script>
+    <script defer type="text/javascript" src="./js/script-expense.js"></script>
   </head>
   <body id="myPage">
 
@@ -45,27 +47,90 @@
         <div id="expenses" class="tab-pane fade in active">
           <h3>РАСХОДЫ</h3>
           <div class="row">
-            <div class="col-sm-4">
+            <div class="col-xs-3">
             </div>
-            <div class="col-sm-4">
-              <div class="form-group">
-                <input id="exp-input" type="text" class="form-control" name="my-input" placeholder="Введите значение" />
-              </div>
-              <div class="form-group">
-                <button id="add-exp-button" type="button" class="btn btn-default">Добавить в список</button>
-              </div>
-              <ul id="exp-list">
+            <div class="col-xs-6">
+              <div class="form-inline">
+                <div class="form-group">
+                  <select id="exp-input-cat" class="form-control">
+                    <option value="">---категория расхода---</option>
+                    <option value="Food">Питание</option>
+                    <option value="Telecom">Телеком</option>
+                  </select>
+                </div>
+                <div class="input-group">
+                  <input id="exp-input-amount" type="text" class="form-control" placeholder="0.00" />
+                  <div class="input-group-btn">
+                    <button id="add-exp-button" type="button" class="btn btn-default">
+                      <i class="glyphicon glyphicon-plus"></i>
+                    </button>
+                  </div>
+                </div>
 
-              </ul>
+              </div>
+
+              <table class="table table-striped text-left">
+                <thead>
+                  <tr>
+                    <th>Категория</th>
+                    <th>Сумма</th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <td>ИТОГО:</td>
+                    <td id="exp-total">0.00</td>
+                  </tr>
+                </tfoot>
+                <tbody id="exp-list">
+                  <tr>
+
+                  </tr>
+                </tbody>
+              </table>
             </div>
-            <div class="col-sm-4">
+            <div class="col-xs-3">
             </div>
           </div>
         </div>
 
         <div id="categories" class="tab-pane fade">
           <h3>КАТЕГОРИИ</h3>
-          <p>содержимое категории</p>
+          <div class="row">
+            <div class="col-sm-4">
+            </div>
+            <div class="col-sm-4">
+              <div class="form-inline">
+                <div class="input-group">
+                  <input id="cat-input-name" type="text" class="form-control" placeholder="Введите название" />
+                  <div class="input-group-btn">
+                    <button id="add-cat-button" type="button" class="btn btn-default">
+                      <i class="glyphicon glyphicon-plus"></i>
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+
+              <table class="table table-striped text-left">
+                <thead>
+                  <tr>
+                    <th>Название</th>
+                  </tr>
+                </thead>
+                <tbody id="cat-list">
+                  <tr>
+                    <td>Питание</td>
+                  </tr>
+                  <tr>
+                    <td>Телеком</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-sm-4">
+            </div>
+          </div>
         </div>
       </div>
 
