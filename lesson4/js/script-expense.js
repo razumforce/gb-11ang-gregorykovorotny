@@ -1,4 +1,3 @@
-(function() {
 
   var Expense = Backbone.Model.extend({
     defaults: {
@@ -72,15 +71,3 @@
       return this;
     },
   });
-
-  var expenses = new Expenses([
-    new Expense({ category: 'Home costs', amount: 1.07 }),
-    new Expense({ category: 'Category 25', amount: 125.00 }),
-    new Expense({ category: 'Home costs', amount: 21.07 }),
-  ]);
-
-  var expensesView = new ExpensesView({ el: '#expenses', model: expenses });
-
-  expensesView.render();
-
-})();

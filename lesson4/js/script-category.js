@@ -1,4 +1,3 @@
-(function() {
 
   var Category = Backbone.Model.extend({
     defaults: {
@@ -90,17 +89,3 @@
       return this;
     },
   });
-
-  var categories = new Categories([
-    new Category({ name: 'Home costs' }),
-    new Category({ name: 'Category 25' }),
-  ]);
-
-  var categoriesSelectView = new CategoriesSelectView({ el: '#expenses', model: categories });
-
-  var caregoriesView = new CategoriesView({ el: '#categories', model: categories });
-
-  categoriesSelectView.render();
-  caregoriesView.render();
-
-})();
