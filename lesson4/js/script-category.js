@@ -1,47 +1,106 @@
 (function() {
-  var CategoriesList = Backbone.Collection.extend({
-    initialize: function() {
-      this.bind('add', function(model) {
-        category.render(model);
-      });
+
+  var Category = Backbone.Model.extend({
+    defaults: {
+      name: '',
+    }
+  });
+
+  var CategoryView = Backbone.View.extend({
+    tagName: 'tr',
+    template: _.template('<td><%= name %></td>'),
+    render: function() {
+      this.$el.html(this.template(this.model.attributes));
+
+      return this;
     },
   });
 
-  var CategoriesView = Backbone.View.extend({
-    tagName: 'tr',
-    events: {
-      'click #add-cat-button': 'addCategoryToList',
+  var CategorySelectView = Backbone.View.extend({
+    tagName: 'option',
+    template: _.template('<%= name %>'),
+    render: function() {
+      this.$el.html(this.template(this.model.attributes));
+      this.$el.val(this.model.get('name'));
+
+      return this;
     },
+  });
+
+
+  var Categories = Backbone.Collection.extend({
+    model: Category,
+  });
+
+
+
+  var CategoriesSelectView = Backbone.View.extend({
     initialize: function() {
-      this.categoriesList = new CategoriesList();
-      _.bindAll(this, 'render');
+      this.model.on('all', this.render, this);
     },
-    addCategoryToList: function() {
-      var categoryName = $5('#cat-input-name').val();
-      $5('#cat-input-name').val('');
-      console.log(typeof categoryName, isNaN(categoryName), categoryName.length);
+
+    tagName: 'select',
+    render: function() {
+      $('#exp-input-cat').empty();
+      $('#exp-input-cat').append('<option value="">--Choose option--</option>');
+      this.model.each(function(category) {
+        var categorySelectView = new CategorySelectView({ model: category });
+        $('#exp-input-cat').append(categorySelectView.render().$el);
+      });
+
+      return this;
+    },
+  });
+
+
+  var CategoriesView = Backbone.View.extend({
+    initialize: function() {
+      this.model.on('all', this.render, this);
+    },
+
+    tagName: 'table',
+    events: {
+      'click #add-cat-button': 'onClickAdd',
+    },
+
+    onClickAdd: function() {
+      var categoryName = $('#cat-input-name').val();
 
       var hasError = false;
       if (typeof categoryName !== 'undefined' && typeof categoryName === 'string' && categoryName.length > 2 && isNaN(categoryName)) {
-        $5('#cat-name-error').removeClass('has-error');
+        $('#cat-name-error').removeClass('has-error');
       } else {
-        $5('#cat-name-error').addClass('has-error');
+        $('#cat-name-error').addClass('has-error');
         hasError = true;
       }
 
       if (!hasError) {
-        this.categoriesList.add({ categoryName: categoryName });
+        $('#cat-input-name').val('');
+        this.model.add(new Category({ name: categoryName }));
       }
     },
-    render: function(model) {
-      $5('#cat-list').append('<tr><td>' + model.get('categoryName') + '</td></tr>');
-      console.log('category added');
 
-      // не лучше ли сделать отдельную модель/вьюху?
-      $5('#exp-input-cat').append('<option value="' + model.get('categoryName') + '">' + model.get('categoryName') + '</option>');
-      console.log('category added to select');
+    render: function() {
+      $('#cat-list').empty();
+      this.model.each(function(category) {
+        var categoryView = new CategoryView({ model: category });
+        $('#cat-list').append(categoryView.render().$el);
+      });
+
+      return this;
     },
   });
 
-  var category = new CategoriesView({ el: 'body' });
+  var categories = new Categories([
+    new Category({ name: 'Home costs' }),
+    new Category({ name: 'Category 25' }),
+  ]);
+
+  var categoriesSelectView = new CategoriesSelectView({ el: '#expenses', model: categories });
+
+  var caregoriesView = new CategoriesView({ el: '#categories', model: categories });
+
+  categoriesSelectView.render();
+  caregoriesView.render();
+
 })();

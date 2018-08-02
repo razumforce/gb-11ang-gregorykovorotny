@@ -17,7 +17,7 @@
   border-radius: 0;
 }
 
-.navbar .nav li a, .navbar .navbar-brand {
+.navbar .nav li a, .navbar .navbar-header .navbar-brand {
   color: #fff;
 }
 
@@ -28,7 +28,6 @@
 
 .navbar-default .navbar-toggle {
   border-color: transparent;
-  color: #fff;
 }
 
 .navbar-fixed-bottom {
