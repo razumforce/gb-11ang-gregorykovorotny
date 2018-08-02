@@ -58,7 +58,7 @@
       this.model.on('all', this.render, this);
     },
 
-    tagName: 'table',
+    tagName: 'tbody',
     events: {
       'click #add-cat-button': 'onClickAdd',
     },

@@ -27,7 +27,7 @@
       this.model.on('all', this.render, this);
     },
 
-    tagName: 'table',
+    tagName: 'tbody',
     events: {
       'click #add-exp-button': 'onClickAdd',
     },
