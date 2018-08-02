@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="игра - версия на backbone.js">
+    <title>Задание 5 - Игра</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/stylesheet.css">
+    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script defer type="text/javascript" src="./vendor/_.js"></script>
+    <script defer type="text/javascript" src="./vendor/bb.js"></script>
+    <script defer type="text/javascript" src="./js/script-game.js"></script>
+    <script defer type="text/javascript" src="./js/script.js"></script>
+  </head>
+  <body id="myPage">
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12 text-center">
+          <h1>ИГРА</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+
+        </div>
+        <div class="col-sm-4 text-center">
+          <table id="farm" class="table table-bordered">
+            <tr>
+              <td>
+                <img src="./img/cereal.png"/>
+                <div class="info" id="grain">
+                    <div class="data">
+                        <div class="level">1</div>
+                        <div class="production">0.00%</div>
+                    </div>
+                </div>
+              </td>
+              <td>
+                <img src="./img/hen.png"/>
+                <div class="info" id="hen">
+                    <div class="data">
+                        <div class="level">1</div>
+                        <div class="production">0.00%</div>
+                    </div>
+                </div>
+              </td>
+              <td>
+                <img src="./img/fox.png"/>
+                <div class="info" id="fox">
+                    <div class="data">
+                        <div class="level">1</div>
+                        <div class="production">0.00%</div>
+                    </div>
+                </div>
+              </td>
+            </tr>
+
+          </table>
+        </div>
+        <div class="col-sm-4">
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+
+        </div>
+        <div class="col-sm-4 text-center">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <td>Название</td>
+                <td>Кол-во</td>
+                <td>Цена</td>
+                <td>Сумма</td>
+              </tr>
+            </thead>
+            <tbody id="store">
+
+            </tbody>
+          </table>
+        </div>
+        <div class="col-sm-4">
+
+        </div>
+      </div>
+    </div>
+
+
+    <footer class="container-fluid text-center navbar-fixed-bottom">
+      <p>Copyright 2018 - <a href="#">ИГРА</a></p>
+    </footer>
+
+  </body>
+</html>
