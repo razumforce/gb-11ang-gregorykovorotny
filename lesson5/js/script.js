@@ -29,8 +29,11 @@
       if (complete >= 100) {
         product.trigger('completeProduction');
       } else {
-        complete = Math.round(100 * (complete + productivity)) / 100;
+        complete = Number((complete + productivity).toFixed(2));
         product.set('complete', complete);
+        if (Math.random() < 0.03) {
+          product.trigger('disaster');
+        }
       }
     });
   }, 1000);

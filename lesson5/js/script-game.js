@@ -30,12 +30,10 @@
   StoreViews.StoreItem = Backbone.View.extend({
     tagName: 'tr',
     template: _.template('<td><%= title %></td>' + '<td><%= count %></td>' +
-      '<td><%= price %></td>' + '<td><%= amount %></td>'),
+      '<td><%= price.toFixed(2) %></td>' + '<td><%= (count * price).toFixed(2) %> &#8381;</td>'),
     render: function() {
       this.$el.empty();
-      var templateData = this.model.attributes;
-      templateData.amount = (templateData.count * templateData.price).toFixed(2);
-      this.$el.html(this.template(templateData));
+      this.$el.html(this.template(this.model.attributes));
 
       return this;
     },
@@ -59,11 +57,12 @@
 
   var ProductView = Backbone.View.extend({
     tagName: 'div',
-    template: _.template('<div><%= level %></div>' + '<div><%= complete %></div>'),
+    template: _.template('<div><%= level %></div>' + '<div><%= complete.toFixed(2) %>%</div>'),
     initialize: function() {
       this.$el = $('#' + this.model.get('title'));
       this.listenTo(this.model, 'completeProduction', this.completeProduction, this);
       this.listenTo(this.model, 'upgrade', this.upgrade, this);
+      this.listenTo(this.model, 'disaster', this.disaster, this);
       this.model.on('all', this.render, this);
     },
 
@@ -74,11 +73,10 @@
 
     completeProduction: function() {
       var productInStore = myStore.findWhere({ title: this.model.get('title') })
-      console.log(productInStore);
       var count = productInStore.get('count');
       var complete = this.model.get('complete');
       var produced = Math.floor(complete / 100);
-      this.model.set('complete', Math.round(100 * (complete / 100 - produced)));
+      this.model.set('complete', Number((complete - produced * 100).toFixed(2)));
       productInStore.set('count', count + produced);
       if (this.model.get('consumes') !== null) {
         console.log('enter consumes');
@@ -91,6 +89,14 @@
             this.model.trigger('upgrade');
           }
         }
+      }
+    },
+
+    disaster: function() {
+      if (this.model.get('title') === 'grain') {
+        console.log('disaster');
+        var complete = Number((this.model.get('complete') * 0.3).toFixed(2));
+        this.model.set('complete', complete);
       }
     },
 
