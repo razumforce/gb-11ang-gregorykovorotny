@@ -31,7 +31,7 @@
       } else {
         complete = Number((complete + productivity).toFixed(2));
         product.set('complete', complete);
-        if (Math.random() < 0.03) {
+        if (Math.random() < 0.07) {
           product.trigger('disaster');
         }
       }

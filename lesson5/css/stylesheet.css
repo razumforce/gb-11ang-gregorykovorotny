@@ -1,3 +1,7 @@
 .container-fluid {
   padding: 20px 20px;
 }
+
+.disaster {
+  color: red;
+}

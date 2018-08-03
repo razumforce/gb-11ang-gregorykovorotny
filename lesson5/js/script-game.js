@@ -95,8 +95,17 @@
     disaster: function() {
       if (this.model.get('title') === 'grain') {
         console.log('disaster');
-        var complete = Number((this.model.get('complete') * 0.3).toFixed(2));
+        var complete = Number((this.model.get('complete') * 0.7).toFixed(2));
         this.model.set('complete', complete);
+        var disasterElement = this.$el;
+        disasterElement.addClass('disaster');
+        $('#info-disaster').html('Стихийное бедствие - град!');
+        $('#info-disaster').addClass('disaster');
+        setTimeout(function() {
+          disasterElement.removeClass('disaster');
+          $('#info-disaster').html('Все в порядке');
+          $('#info-disaster').removeClass('disaster');
+        }, 900);
       }
     },
 
