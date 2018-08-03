@@ -21,16 +21,16 @@
   var storeView = new StoreViews.Store({ collection: myStore, el: $('#store') });
   storeView.render();
 
-  // var gameTimer = setInterval(function() {
-  //   myFarm.each(function(product) {
-  //     var level = product.get('level');
-  //     var productivity = product.get('productivity') * (level > 0 ? Math.log(level + 1) : 0);
-  //     var complete = product.get('complete');
-  //     if (complete >= 100) {
-  //       product.trigger('completeProduction');
-  //     } else {
-  //       complete = Math.round(100 * (complete + productivity)) / 100;
-  //       product.set('complete', complete);
-  //     }
-  //   });
-  // }, 1000);
+  var gameTimer = setInterval(function() {
+    myFarm.each(function(product) {
+      var level = product.get('level');
+      var productivity = product.get('productivity') * (level > 0 ? Math.log(level + 1) : 0);
+      var complete = product.get('complete');
+      if (complete >= 100) {
+        product.trigger('completeProduction');
+      } else {
+        complete = Math.round(100 * (complete + productivity)) / 100;
+        product.set('complete', complete);
+      }
+    });
+  }, 1000);

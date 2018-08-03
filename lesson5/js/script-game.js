@@ -68,11 +68,30 @@
     },
 
     upgrade: function() {
-      console.log('upgrade');
+      var level = this.model.get('level');
+      this.model.set('level', ++level);
     },
 
     completeProduction: function() {
-      console.log('completeProduction');
+      var productInStore = myStore.findWhere({ title: this.model.get('title') })
+      console.log(productInStore);
+      var count = productInStore.get('count');
+      var complete = this.model.get('complete');
+      var produced = Math.floor(complete / 100);
+      this.model.set('complete', Math.round(100 * (complete / 100 - produced)));
+      productInStore.set('count', count + produced);
+      if (this.model.get('consumes') !== null) {
+        console.log('enter consumes');
+        productInStore = myStore.findWhere({ title: this.model.get('consumes') });
+        if (productInStore.get('count') >= 10) {
+          count = productInStore.get('count');
+          productInStore.set('count', count - 10);
+          if (Math.random() >= 0.5) {
+            console.log('enter random upgrade');
+            this.model.trigger('upgrade');
+          }
+        }
+      }
     },
 
     render: function() {
