@@ -81,7 +81,7 @@
       if (this.model.get('consumes') !== null) {
         console.log('enter consumes');
         productInStore = myStore.findWhere({ title: this.model.get('consumes') });
-        if (productInStore.get('count') >= 10) {
+        if (productInStore.get('count') > 10) {
           count = productInStore.get('count');
           productInStore.set('count', count - 10);
           if (Math.random() >= 0.5) {
